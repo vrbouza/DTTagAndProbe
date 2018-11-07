@@ -1,5 +1,5 @@
-#ifndef DTTnPSegmentEff_h
-#define DTTnPSegmentEff_h
+#ifndef DTTnPLocalTrigRes_h
+#define DTTnPLocalTrigRes_h
 
 #include "DTTnPBaseAnalysis.h"
 
@@ -12,12 +12,12 @@
 #include <regex>
 #include <map>
 
-class DTTnPSegmentEff : public DTTnPBaseAnalysis 
+class DTTnPLocalTrigRes : public DTTnPBaseAnalysis 
 {
 
  public:
-  DTTnPSegmentEff(const std::string & configFile);
-  ~DTTnPSegmentEff() { };
+  DTTnPLocalTrigRes(const std::string & configFile);
+  ~DTTnPLocalTrigRes() { };
 
   void Loop() override;
   
@@ -36,6 +36,15 @@ class DTTnPSegmentEff : public DTTnPBaseAnalysis
                             const Int_t muWh,
                             const Int_t xMu,
                             const Int_t yMu);
+
+  Int_t getPassingTrig(const Int_t iMu,
+			const Int_t iCh);
+
+  Int_t getPassingTrigInCh(const Int_t iMu,
+                            const Int_t muSt,
+                            const Int_t muSec,
+                            const Int_t muWh,
+                            const Float_t xMuphi);
 
 };
 
