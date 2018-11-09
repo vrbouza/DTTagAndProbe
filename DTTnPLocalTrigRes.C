@@ -154,7 +154,7 @@ void DTTnPLocalTrigRes::book()
 	std::cout << sector.str() << std::endl;
 	
 	
-	std::string chTag = "_W" + whell.str() + "_Sec" + sector.str() + "_MB" + station.str();	  
+	std::string chTag = wheel.str() + sector.str() + station.str();	  
 	hName = "TM_PhiResidualIn" + chTag.str();
 	m_plots[hName.c_str()] = new TH1F(hName.c_str(), 
 					  "Trigger local position In - Segment local position (correlated triggers); #phi", 
@@ -211,167 +211,101 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 		   Mu_pz->at(iMu),
 		   0.106);
 
- 
 
-  for (Int_t iCh = 1; iCh < 5; ++iCh)
-    {
-      std::stringstream iChTag;
-      iChTag << "MB" << iCh;
-      
+  /// ---- Resolution plots per sector, wheel & chamber: 
+  for (Int_t iCh = 1; iCh <= 4; ++iCh) {
+    std::stringstream station;  
+    station << "MB" << iCh;
     
-      Int_t nMatchInOtherCh = DTTnPBaseAnalysis::nMatchedCh(iMu,iCh);
-     
-      m_plots["nOtherMatchedChVsEta"]->Fill(Mu_eta->at(iMu),nMatchInOtherCh);
-         
-      if ( nMatchInOtherCh < m_tnpConfig.probe_minNMatchedSeg )  continue;
-	  
-      Int_t iPassingTMuxIn  = getPassingTrigIn(iMu,iCh);  // TMuxIn primitive id in that station
-      Int_t iPassingTMuxOut = getPassingTrigOut(iMu,iCh);  // TMuxOut primitive id in that station
-      Int_t iPassingSeg     = getPassingProbe(iMu,iCh); // track segment id in that station
-      
-		     
-      // ------  compute TMuxIn efficiency with WITH segment requirements 
-      bool segm_ok = false;
-      segm_ok = (iPassingSeg>=0 && ((dtsegm4D_hasZed->at(iPassingSeg)>0 && iCh!=4 && dtsegm4D_phinhits->at(iPassingSeg)>=4) ||
-				    (iCh==4 && dtsegm4D_phinhits->at(iPassingSeg)>=4)));
-      
-      if (!segm_ok) continue;
-      
-      // -----------
-      if (std::abs(probeVec.Eta()) > m_tnpConfig.probe_maxAbsEta[iCh - 1]) continue;
-      
-      for (Int_t iMatch = 0; iMatch < Mu_nMatches->at(iMu); ++iMatch)   // this is in full acceptance region (out of borders)
-	{
-	  Int_t whMu  = getXY<Int_t>(Mu_matches_Wh,iMu,iMatch);
-	  Int_t secMu = getXY<Int_t>(Mu_matches_Sec,iMu,iMatch);
-	  Int_t stMu  = getXY<Int_t>(Mu_matches_St,iMu,iMatch);
-	  Float_t xMu = getXY<Float_t>(Mu_matches_x,iMu,iMatch);
-	  Float_t yMu = getXY<Float_t>(Mu_matches_y,iMu,iMatch);
-	  Float_t phiMu = getXY<Float_t>(Mu_matches_phi,iMu,iMatch);
-	  
-	  Float_t xBorderMu = getXY<Float_t>(Mu_matches_edgeX,iMu,iMatch);
-	  Float_t yBorderMu = getXY<Float_t>(Mu_matches_edgeY,iMu,iMatch);
-	  
-	  if (stMu == iCh &&
-	      xBorderMu < m_tnpConfig.probe_maxBorderDx &&
-	      yBorderMu < m_tnpConfig.probe_maxBorderDy )
-		    { 
-		      
-		      int tr_secMu;
-		      tr_secMu=secMu;
-		      if(stMu==4 && secMu==13) {tr_secMu=4; }
-		      else if(stMu==4 && secMu==14) {tr_secMu=10; }
+    Int_t nMatchInOTherch ss= DTTnPBaseAnalysis::nMatchedCh(iMu,iCh);
+    m_plots["nOtherMatchedChVsEta"]->Fill(Mu_eta->at(iMu),nMatchInOtherCh);
+    if ( nMatchInOtherCh < m_tnpConfig.probe_minNMatchedSeg )  continue;
 
-		      iPassingTMuxIn =  getPassingTrigInCh(iMu,stMu,tr_secMu,whMu,phiMu);
-		      iPassingSeg =  getPassingProbeInCh(iMu,stMu,secMu,whMu,xMu,yMu);
+    Int_t iPassingTMuxIn  = getPassingTrigIn(iMu,iCh);  // TMuxIn primitive id in that station
+    Int_t iPassingTMuxOut = getPassingTrigOut(iMu,iCh);  // TMuxOut primitive id in that station
+    Int_t iPassingSeg     = getPassingProbe(iMu,iCh); // track segment id in t
+    
+    // ------  compute TMuxIn efficiency with WITH segment requirements 
+    bool segm_ok = false;
+    segm_ok = (iPassingSeg>=0 && ((dtsegm4D_hasZed->at(iPassingSeg)>0 && iCh!=4 && dtsegm4D_phinhits->at(iPassingSeg)>=4) ||
+				  (iCh==4 && dtsegm4D_phinhits->at(iPassingSeg)>=4)));
+    
+    if (!segm_ok) continue;
+    if (std::abs(probeVec.Eta()) > m_tnpConfig.probe_maxAbsEta[iCh - 1]) continue;    
 
-		      segm_ok = false;
-		      segm_ok = (iPassingSeg>=0 && ((dtsegm4D_hasZed->at(iPassingSeg)>0 && iCh!=4 && dtsegm4D_phinhits->at(iPassingSeg)>=4) ||
-						    (iCh==4 && dtsegm4D_phinhits->at(iPassingSeg)>=4)));
-		      segm_ok_noZed = false;
-		      segm_ok_noZed = (iPassingSeg>=0 && dtsegm4D_phinhits->at(iPassingSeg)>=4);
-		      
-		      
-		      
-		      hName = "trigeffVsPt" + iChTag.str();
-		      m_effs[hName]->Fill(iPassingTMuxIn >= 0,probeVec.Pt());
-		      
-		      std::string hName = "trigeffVsEta" + iChTag.str();
-		      m_effs[hName]->Fill(iPassingTMuxIn >= 0,probeVec.Eta());
-		      
-		      hName = "trigeffPhiVsEta" + iChTag.str();
-		      m_effs[hName]->Fill(iPassingTMuxIn >= 0,probeVec.Phi(),probeVec.Eta());
-		      
-		      hName = "trigeffSecVsWh" + iChTag.str();
-		      m_effs[hName]->Fill(iPassingTMuxIn >= 0,tr_secMu,whMu);
-		      
-		      
-		      
-		      hName = "trigeffVsLumi" + iChTag.str();
-		      m_effs[hName]->Fill(iPassingTMuxIn >= 0,lumiperblock);
-		      
-		      
-		      if(segm_ok_noZed) {
+    for (Int_t iWh = -2; iWh <= 2; ++iWh)    {
+      std::stringstream wheel; wheel << "_Wh" << iWh;
+      std::cout << wheel.str() << std::endl;
+      for (Int_t iSc = 1; iSc <= 12; ++iSc)    {
+	std::stringstream sector; sector << "_Sec" << iWh;
+	std::cout << sector.str() << std::endl;
+	std::string chTag = wheel.str() + sector.str() + station.str();	  	
+	
+	int wheel    = segm4D_wheel->at(iPassingSeg);
+	int station  = segm4D_station->at(iPassingSeg);
+	int scsector = segm4D_sector->at(iPassingSeg);
+	float trackPosPhi, trackPosEta, trackDirPhi, trackDirEta;
+	DTTnPLocalTrigRes::computeSCCoordinates(segm4D_x_dir_loc->at(iPassingSeg),
+						segm4D_y_dir_loc->at(iPassingSeg),
+						segm4D_z_dir_loc->at(iPassingSeg),
+						scsector,trackPosPhi,trackDirPhi,
+						trackPosEta,trackDirEta);
+	
+	
+	// In: 
+	Float_t trigPos  = ltTwinMuxIn_phi->at(iPassingTMuxIn);
+	Float_t trigDir = ltTwinMuxIn_phiB->at(iPassingTMuxIn);
+	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
+	trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
 
-			if(segm_ok) {
-			  hName = "trigeff_whensegm_VsPt" + iChTag.str();
-			  m_effs[hName]->Fill(iPassingTMuxIn >= 0,probeVec.Pt());
-			  
-			  hName = "trigeff_whensegm_PhiVsEta" + iChTag.str();
-			  m_effs[hName]->Fill(iPassingTMuxIn >= 0,probeVec.Phi(),probeVec.Eta());
-			  
-			  hName = "trigeff_whensegm_VsEta" + iChTag.str();
-			  m_effs[hName]->Fill(iPassingTMuxIn >= 0,probeVec.Eta());
-			  
-			  
-			  hName = "trigeff_whensegm_SecVsWh" + iChTag.str();
-			  m_effs[hName]->Fill(iPassingTMuxIn >= 0,tr_secMu,whMu);
-			  
-			  hName = "trigeff_whensegm_VsLumi" + iChTag.str();
-			  m_effs[hName]->Fill(iPassingTMuxIn >= 0,lumiperblock);
-			  
-			  
-			  hName = "trigRes_whensegm" + iChTag.str();
-			  if (iPassingSeg >=0 && iPassingTMuxIn>=0) {
-			    Float_t muphi = dtsegm4D_phi->at(iPassingSeg);
-			    Float_t trigphi = ltTwinMuxIn_phi->at(iPassingTMuxIn);
-			    trigphi = trigphi/4096 + ((3.1415927*30)/180)*(secMu-1);
-			    m_plots[hName]->Fill(1.-trigphi/muphi);
-			  }
-			}
-		      }
-		    }
-		}
-	    }
-	}
-    }   
+	Float_t deltaPos = trigPos-trackPosPhi;
+	Float_t deltaDir = trigDir-trackDirPhi;
+	
+
+	std::string hName = "TM_PhiResidualIn" + chTag.str();
+	m_plots[hName.c_str()]->Fill(deltaPos);
+
+	hName = "TM_PhibResidualIn" + chTag.str();
+	m_plots[hName.c_str()]->Fill(deltaDir);
+	
+	hName = "TM_PhitkvsPhitrig" + chTag.str();
+	m_plots[hName.c_str()]->Fill(trigPos,trackPosPhi);
+	
+	hName = "TM_PhibtkvsPhibtrig" + chTag.str();
+	m_plots[hName.c_str()]->Fill(trigDir,trackDirPhi);
+
+	hName = "TM_PhibResidualvsTkPos" + chTag.str();
+	m_plots[hName.c_str()]->Fill(trackPosPhi,trigDir-trackDirPhi);
+	
+	hName = "TM_PhiResidualvsTkPos" + chTag.str();
+	m_plots[hName.c_str()]->Fill(trackPosPhi,trigPos-trackPosPhi);
+
+
+	// Out: 
+	Float_t trigPos  = ltTwinMuxOut_phi->at(iPassingTMuxOut);
+	Float_t trigDir = ltTwinMuxOut_phiB->at(iPassingTMuxOut);
+	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
+	trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
+
+	Float_t deltaPos = trigPos-trackPosPhi;
+	Float_t deltaDir = trigDir-trackDirPhi;
+
+	hName = "TM_PhiResidualOut" + chTag.str();
+	m_plots[hName.c_str()]->Fill(deltaPos)
+
+	hName = "TM_PhibResidualOut" + chTag.str();
+	m_plots[hName.c_str()]->Fill(deltaDir)
+      }
+    }
+  }
 }
 
-  void DTTnPLocalTrigRes::endJob() 
-  {
-    Int_t iS;
-    for (Int_t iCh = 1; iCh < 5; ++iCh)
-      {
-	std::stringstream iChTag;
-	iChTag << "MB" << iCh;
+void DTTnPLocalTrigRes::endJob() 
+{
+  return;
+}
 
-	for (Int_t iWh = 1; iWh < 6; ++iWh)
-	  {
-
-	    for (Int_t iSec = 1; iSec < 15; ++iSec)
-	      {
-
-		if (iSec > 12 && iCh !=4)
-		  continue;
-		iS=iSec;
-		if(iSec==13 && iCh==4) {iS=4;}
-		else if(iSec==14 && iCh==4) {iS=10;}
-	      
-		std::string hName   = "trigeffChamb" + iChTag.str();
-		std::string effName = "trigeffSecVsWh" + iChTag.str();
-		m_plots[hName.c_str()]->Fill(m_effs[effName.c_str()]->GetEfficiency(m_effs[effName.c_str()]->GetGlobalBin(iS,iWh)));
-
-		hName   = "trigeff_whensegm_Chamb" + iChTag.str();
-		effName = "trigeff_whensegm_SecVsWh" + iChTag.str();
-		m_plots[hName.c_str()]->Fill(m_effs[effName.c_str()]->GetEfficiency(m_effs[effName.c_str()]->GetGlobalBin(iS,iWh)));
-
-		hName   = "trigeffAcc_whensegm_Chamb" + iChTag.str();
-		effName = "trigeffAcc_whensegm_SecVsWh" + iChTag.str();
-		m_plots[hName.c_str()]->Fill(m_effs[effName.c_str()]->GetEfficiency(m_effs[effName.c_str()]->GetGlobalBin(iS,iWh)));
-		
-//		hName = "trigRes_whensegm_Cham" + iChTag.str();
-//		HistoName = "trigRes_whensegm_SecVsWh"  + iChTag.str();
-//		m_plots[hName.c_str()]->Fill(m_plots[HistoName.c_str()]->GetBinContent(m_plots[HistoName.c_str()]->GetBin(iS,iWh));
-		// hName   = "trigeffAcc_whensegm_noZed_Chamb" + iChTag.str();
-		// effName = "trigeffAcc_whensegm_NoZed_SecVsWh" + iChTag.str();
-		// m_plots[hName.c_str()]->Fill(m_effs[effName.c_str()]->GetEfficiency(m_effs[effName.c_str()]->GetGlobalBin(iS,iWh)));
-	      
-	      }
-	  }
-      }
-  }
-
-  Int_t DTTnPLocalTrigRes::getPassingProbe(const Int_t iMu,
+Int_t DTTnPLocalTrigRes::getPassingProbe(const Int_t iMu,
 					   const Int_t iCh) 
   {
 
@@ -443,7 +377,7 @@ Int_t DTTnPLocalTrigRes::getPassingTrigIn(const Int_t iMu,
 
 	Float_t phiTrig = ltTwinMuxIn_phi->at(iTMuxIn);
 	phiTrig = phiTrig/4096 + ((3.1415927*30)/180)*(secMu-1);
-	  
+	
 	Float_t Dphi = fabs(phiMu-phiTrig);
 	if(Dphi < bestDphi)
 	  {
@@ -568,7 +502,7 @@ Int_t DTTnPLocalTrigRes::getPassingProbeInCh(const Int_t iMu,
 	Int_t stTMuxIn  = ltTwinMuxIn_station->at(iTMuxIn);
 	Int_t bxTMuxIn  = ltTwinMuxIn_bx->at(iTMuxIn);
 	Int_t phiTMuxIn  = ltTwinMuxIn_phi->at(iTMuxIn);
-	Int_t phiBTMuxIn  = ltTwinMuxIn_phiB->at(iTMuxIn);
+	//	Int_t phiBTMuxIn  = ltTwinMuxIn_phiB->at(iTMuxIn);
 	Int_t qualityTMuxIn  = ltTwinMuxIn_quality->at(iTMuxIn);
 
 	if(stTMuxIn ==4 && secTMuxIn==13)  {secTMuxIn=4;}
@@ -613,7 +547,7 @@ Int_t DTTnPLocalTrigRes::getPassingProbeInCh(const Int_t iMu,
 	Int_t stTMuxOut  = ltTwinMuxOut_station->at(iTMuxOut);
 	Int_t bxTMuxOut  = ltTwinMuxOut_bx->at(iTMuxOut);
 	Int_t phiTMuxOut  = ltTwinMuxOut_phi->at(iTMuxOut);
-	Int_t phiBTMuxOut  = ltTwinMuxOut_phiB->at(iTMuxOut);
+	//	Int_t phiBTMuxOut  = ltTwinMuxOut_phiB->at(iTMuxOut);
 	Int_t qualityTMuxOut  = ltTwinMuxOut_quality->at(iTMuxOut);
 
 	if(stTMuxOut ==4 && secTMuxOut==13)  {secTMuxOut=4;}
@@ -650,6 +584,5 @@ void DTTnPLocalTrigRes::computeSCCoordinates(float localDirX,
   scsec = sector>12 ? sector==13 ? 4 : 10 : sector;
   float xcenter = (scsec==4||scsec==10) ? (sector-12.9)/abs(sector-12.9)*xCenter_[(sector==10||sector==14)] : 0.;
   x = localPosX+xcenter*(station==4);
-  y = localPosY;
-
+  y = localPosY; 
 }
