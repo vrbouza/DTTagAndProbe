@@ -122,25 +122,25 @@ void DTTnPLocalTrigRes::book()
     std::cout << station.str() << std::endl;
     
     std::string chTag = "_MB" + station.str();	  
-    hName = "TM_PhiResidualIn_SecVsWh" + chTag.str();
-    m_plots[hName.c_str()] = new TH2F(hName.c_str(), 
-				      "Trigger local position In - Segment local position (correlated triggers); sector; wheel", 
-      				      12,0.5,12.5,5,-2.5,2.5);
-    
-    hName = "TM_PhibResidualIn_SecVsWh" + chTag.str();
-    m_plots[hName.c_str()] = new TH1F(hName.c_str(), ,
-				      "Trigger local direction In - Segment local direction (correlated triggers); sector; wheel",
-      				      12,0.5,12.5,5,-2.5,2.5);
-    
-    hName = "TM_PhiResidualOut_SecVsWh" + chTag.str();
-    m_plots[hName.c_str()] = new TH1F(hName.c_str(),
-				      "Trigger local position Out - Segment local position (correlated triggers); sector; wheel",
-      				      12,0.5,12.5,5,-2.5,2.5);
-    
-    hName = "TM_PhibResidualOut_SecVsWh" + chTag.str();
-    m_plots[hName.c_str()] = new TH1F(hName.c_str(),
-				      "Trigger local direction Out - Segment local direction (correlated triggers); sector; wheel",
-      				      12,0.5,12.5,5,-2.5,2.5);					
+    std::string hName = "TM_PhiResidualIn_SecVsWh" + chTag;
+//NOTFORNOW    m_plots[hName.c_str()] = new TH2F(hName.c_str(), 
+//NOTFORNOW				      "Trigger local position In - Segment local position (correlated triggers); sector; wheel", 
+//NOTFORNOW      				      12,0.5,12.5,5,-2.5,2.5);
+//NOTFORNOW    
+//NOTFORNOW    hName = "TM_PhibResidualIn_SecVsWh" + chTag.c_str();
+//NOTFORNOW    m_plots[hName.c_str()] = new TH1F(hName.c_str(), ,
+//NOTFORNOW				      "Trigger local direction In - Segment local direction (correlated triggers); sector; wheel",
+//NOTFORNOW      				      12,0.5,12.5,5,-2.5,2.5);
+//NOTFORNOW    
+//NOTFORNOW    hName = "TM_PhiResidualOut_SecVsWh" + chTag.c_str();
+//NOTFORNOW    m_plots[hName.c_str()] = new TH1F(hName.c_str(),
+//NOTFORNOW				      "Trigger local position Out - Segment local position (correlated triggers); sector; wheel",
+//NOTFORNOW      				      12,0.5,12.5,5,-2.5,2.5);
+//NOTFORNOW    
+//NOTFORNOW    hName = "TM_PhibResidualOut_SecVsWh" + chTag.c_str();
+//NOTFORNOW    m_plots[hName.c_str()] = new TH1F(hName.c_str(),
+//NOTFORNOW				      "Trigger local direction Out - Segment local direction (correlated triggers); sector; wheel",
+//NOTFORNOW      				      12,0.5,12.5,5,-2.5,2.5);					
 
     
     for (Int_t iWh = -2; iWh <= 2; ++iWh)    {
@@ -149,48 +149,49 @@ void DTTnPLocalTrigRes::book()
       
       
 	
-      for (Int_t iSc = 1; iSc <= 12; ++iSc)    {
+      for (Int_t iSc = 1; iSc <= 14; ++iSc)    {
 	std::stringstream sector; sector << "_Sec" << iWh;
 	std::cout << sector.str() << std::endl;
 	
+	if (iSc > 12 && iCh !=4) continue;
 	
 	std::string chTag = wheel.str() + sector.str() + station.str();	  
-	hName = "TM_PhiResidualIn" + chTag.str();
+	hName = "TM_PhiResidualIn" + chTag;
 	m_plots[hName.c_str()] = new TH1F(hName.c_str(), 
 					  "Trigger local position In - Segment local position (correlated triggers); #phi", 
 					  nPhiBins,-rangePhi,rangePhi);
 	
-	hName = "TM_PhibResidualIn" + chTag.str();
-	m_plots[hName.c_str()] = new TH1F(hName.c_str(), ,
+	hName = "TM_PhibResidualIn" + chTag;
+	m_plots[hName.c_str()] = new TH1F(hName.c_str(),
 					  "Trigger local direction In - Segment local direction (correlated triggers); #phi",
 					  nPhiBins,-rangePhi,rangePhi);
 	
-	hName = "TM_PhiResidualOut" + chTag.str();
+	hName = "TM_PhiResidualOut" + chTag;
 	m_plots[hName.c_str()] = new TH1F(hName.c_str(),
 					  "Trigger local position Out - Segment local position (correlated triggers); #phi",
 					  nPhiBins,-rangePhi,rangePhi);
 	
-	hName = "TM_PhibResidualOut" + chTag.str();
+	hName = "TM_PhibResidualOut" + chTag;
 	m_plots[hName.c_str()] = new TH1F(hName.c_str(),
 					  "Trigger local direction Out - Segment local direction (correlated triggers); #phi",
 					  nPhiBins,-rangePhi,rangePhi);
 	
-	hName = "TM_PhitkvsPhitrig" + chTag.str();
+	hName = "TM_PhitkvsPhitrig" + chTag;
 	m_plots[hName.c_str()] = new TH2F(hName.c_str(), 
 					  "Local position: segment vs trigger",
 					  100,-500.,500.,100,-500.,500.);
 	
-	hName = "TM_PhibtkvsPhibtrig" + chTag.str();
+	hName = "TM_PhibtkvsPhibtrig" + chTag;
 	m_plots[hName.c_str()] = new TH2F(hName.c_str(), 
 					  "Local direction : segment vs trigger",
 					  200,-40.,40.,200,-40.,40.);
 
-	hName = "TM_PhibResidualvsTkPos" + chTag.str();
+	hName = "TM_PhibResidualvsTkPos" + chTag;
 	m_plots[hName.c_str()] = new TH2F(hName.c_str(), 
 					  "Local direction residual vs Segment Position",
 					  100,-500.,500.,200,-10.,10.);
 	
-	hName = "TM_PhiResidualvsTkPos" + chTag.str();
+	hName = "TM_PhiResidualvsTkPos" + chTag;
 	m_plots[hName.c_str()] = new TH2F(hName.c_str(), 
 					  "Local Position residual vs Segment Position",
 					  100,-500.,500.,200,-10.,10.);
@@ -217,7 +218,7 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
     std::stringstream station;  
     station << "MB" << iCh;
     
-    Int_t nMatchInOTherch ss= DTTnPBaseAnalysis::nMatchedCh(iMu,iCh);
+    Int_t nMatchInOtherCh = DTTnPBaseAnalysis::nMatchedCh(iMu,iCh);
     m_plots["nOtherMatchedChVsEta"]->Fill(Mu_eta->at(iMu),nMatchInOtherCh);
     if ( nMatchInOtherCh < m_tnpConfig.probe_minNMatchedSeg )  continue;
 
@@ -236,65 +237,64 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
     for (Int_t iWh = -2; iWh <= 2; ++iWh)    {
       std::stringstream wheel; wheel << "_Wh" << iWh;
       std::cout << wheel.str() << std::endl;
-      for (Int_t iSc = 1; iSc <= 12; ++iSc)    {
+      for (Int_t iSc = 1; iSc <= 14; ++iSc)    {
+	if (iSc > 12 && iCh !=4) continue;
 	std::stringstream sector; sector << "_Sec" << iWh;
 	std::cout << sector.str() << std::endl;
 	std::string chTag = wheel.str() + sector.str() + station.str();	  	
 	
-	int wheel    = segm4D_wheel->at(iPassingSeg);
-	int station  = segm4D_station->at(iPassingSeg);
-	int scsector = segm4D_sector->at(iPassingSeg);
-	float trackPosPhi, trackPosEta, trackDirPhi, trackDirEta;
-	DTTnPLocalTrigRes::computeSCCoordinates(segm4D_x_dir_loc->at(iPassingSeg),
-						segm4D_y_dir_loc->at(iPassingSeg),
-						segm4D_z_dir_loc->at(iPassingSeg),
-						scsector,trackPosPhi,trackDirPhi,
-						trackPosEta,trackDirEta);
+	int wheel    = dtsegm4D_wheel->at(iPassingSeg);
+	int station  = dtsegm4D_station->at(iPassingSeg);
+	int sector = dtsegm4D_sector->at(iPassingSeg);
+	float trackPosPhi = dtsegm4D_x_pos_loc->at(iPassingSeg);
+	float trackPosEta = dtsegm4D_y_pos_loc->at(iPassingSeg);
+	float trackDirPhi = TMath::ATan(dtsegm4D_x_dir_loc->at(iPassingSeg)/ dtsegm4D_y_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
+	float trackDirEta = TMath::ATan(dtsegm4D_y_dir_loc->at(iPassingSeg)/ dtsegm4D_z_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
 	
 	
 	// In: 
 	Float_t trigPos  = ltTwinMuxIn_phi->at(iPassingTMuxIn);
 	Float_t trigDir = ltTwinMuxIn_phiB->at(iPassingTMuxIn);
-	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
+	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(sector-1);
 	trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
 
 	Float_t deltaPos = trigPos-trackPosPhi;
 	Float_t deltaDir = trigDir-trackDirPhi;
 	
 
-	std::string hName = "TM_PhiResidualIn" + chTag.str();
+	std::string hName = "TM_PhiResidualIn" + chTag;
 	m_plots[hName.c_str()]->Fill(deltaPos);
 
-	hName = "TM_PhibResidualIn" + chTag.str();
+	hName = "TM_PhibResidualIn" + chTag;
 	m_plots[hName.c_str()]->Fill(deltaDir);
 	
-	hName = "TM_PhitkvsPhitrig" + chTag.str();
+	hName = "TM_PhitkvsPhitrig" + chTag;
 	m_plots[hName.c_str()]->Fill(trigPos,trackPosPhi);
 	
-	hName = "TM_PhibtkvsPhibtrig" + chTag.str();
+	hName = "TM_PhibtkvsPhibtrig" + chTag;
 	m_plots[hName.c_str()]->Fill(trigDir,trackDirPhi);
 
-	hName = "TM_PhibResidualvsTkPos" + chTag.str();
+	hName = "TM_PhibResidualvsTkPos" + chTag;
 	m_plots[hName.c_str()]->Fill(trackPosPhi,trigDir-trackDirPhi);
 	
-	hName = "TM_PhiResidualvsTkPos" + chTag.str();
+	hName = "TM_PhiResidualvsTkPos" + chTag;
 	m_plots[hName.c_str()]->Fill(trackPosPhi,trigPos-trackPosPhi);
 
 
 	// Out: 
-	Float_t trigPos  = ltTwinMuxOut_phi->at(iPassingTMuxOut);
-	Float_t trigDir = ltTwinMuxOut_phiB->at(iPassingTMuxOut);
-	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
+	trigPos  = ltTwinMuxOut_phi->at(iPassingTMuxOut);
+	trigDir = ltTwinMuxOut_phiB->at(iPassingTMuxOut);
+	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(sector-1);
 	trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
 
-	Float_t deltaPos = trigPos-trackPosPhi;
-	Float_t deltaDir = trigDir-trackDirPhi;
+	deltaPos = trigPos-trackPosPhi;
+	deltaDir = trigDir-trackDirPhi;
 
-	hName = "TM_PhiResidualOut" + chTag.str();
-	m_plots[hName.c_str()]->Fill(deltaPos)
+	hName = "TM_PhiResidualOut" + chTag;
+	m_plots[hName.c_str()]->Fill(deltaPos);
 
-	hName = "TM_PhibResidualOut" + chTag.str();
-	m_plots[hName.c_str()]->Fill(deltaDir)
+	hName = "TM_PhibResidualOut" + chTag;
+	m_plots[hName.c_str()]->Fill(deltaDir);
       }
     }
   }
@@ -367,8 +367,8 @@ Int_t DTTnPLocalTrigRes::getPassingTrigIn(const Int_t iMu,
        
     if (stMu == iCh)
       {
-	if(stMu==4 && secMu==13) {secMu=4;}
-	else if(stMu==4 && secMu==14 ) {secMu=10;}
+//	if(stMu==4 && secMu==13) {secMu=4;}
+//	else if(stMu==4 && secMu==14 ) {secMu=10;}
 	
 	Int_t iTMuxIn = getPassingTrigInCh(iMu,stMu,secMu,whMu,phiMu);
 	if (iTMuxIn < 0)
@@ -411,8 +411,6 @@ Int_t DTTnPLocalTrigRes::getPassingTrigOut(const Int_t iMu,
       	if (stMu == iCh)
 	  {
 	    
-	    if(stMu==4 && secMu==13) {secMu=4;}
-	    else if(stMu==4 && secMu==14 ) {secMu=10;}
 	  
 	    Int_t iTMuxOut = getPassingTrigOutCh(iMu,stMu,secMu,
 						 whMu,phiMu);
@@ -420,7 +418,7 @@ Int_t DTTnPLocalTrigRes::getPassingTrigOut(const Int_t iMu,
 	    if (iTMuxOut < 0)
 	      continue;
 	  
-	    Float_t phiTrig = ltTwinMuxOut_phi->at(iTMuxIn);
+	    Float_t phiTrig = ltTwinMuxOut_phi->at(iTMuxOut);
 	    phiTrig = phiTrig/4096 + ((3.1415927*30)/180)*(secMu-1);
 	  
 	    Float_t Dphi = fabs(phiMu-phiTrig);
@@ -572,17 +570,3 @@ Int_t DTTnPLocalTrigRes::getPassingProbeInCh(const Int_t iMu,
     
   }
 
-void DTTnPLocalTrigRes::computeSCCoordinates(float localDirX, 
-					     float localDirY, 
-					     float localDirZ, 
-					     int sector, int station,
-					     int& scsec, float& x, float& xdir, float& y, float& ydir)
-{
-  xdir = TMath::ATan(localDirX / localDirY)*TMath::RadToDeg();
-  ydir = TMath::ATan(localDirY / localDirZ)*TMath::RadToDeg();
-  
-  scsec = sector>12 ? sector==13 ? 4 : 10 : sector;
-  float xcenter = (scsec==4||scsec==10) ? (sector-12.9)/abs(sector-12.9)*xCenter_[(sector==10||sector==14)] : 0.;
-  x = localPosX+xcenter*(station==4);
-  y = localPosY; 
-}

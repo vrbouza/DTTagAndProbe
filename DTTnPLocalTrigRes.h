@@ -37,15 +37,27 @@ class DTTnPLocalTrigRes : public DTTnPBaseAnalysis
                             const Int_t xMu,
                             const Int_t yMu);
 
-  Int_t getPassingTrig(const Int_t iMu,
-			const Int_t iCh);
+  Int_t getPassingTrigIn(const Int_t iMu,
+			 const Int_t iCh);
 
   Int_t getPassingTrigInCh(const Int_t iMu,
-                            const Int_t muSt,
-                            const Int_t muSec,
-                            const Int_t muWh,
-                            const Float_t xMuphi);
+			   const Int_t muSt,
+			   const Int_t muSec,
+			   const Int_t muWh,
+			   const Float_t xMuphi);
 
+  Int_t getPassingTrigOut(const Int_t iMu,
+			  const Int_t iCh);
+  
+  Int_t getPassingTrigOutCh(const Int_t iMu,
+			    const Int_t muSt,
+			    const Int_t muSec,
+			    const Int_t muWh,
+			    const Float_t xMuphi);
+
+
+  
+  
 };
 
 #endif
