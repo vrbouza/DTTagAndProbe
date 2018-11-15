@@ -1,16 +1,5 @@
 #include "DTTnPLocalTrigRes.h"
 
-// DT trigger
-#include "DQM/DTMonitorModule/interface/DTTrigGeomUtils.h"
-
-// Geometry
-#include "DataFormats/GeometryVector/interface/Pi.h"
-#include "Geometry/Records/interface/MuonGeometryRecord.h"
-#include "Geometry/DTGeometry/interface/DTGeometry.h"
-#include "Geometry/DTGeometry/interface/DTLayer.h"
-#include "Geometry/DTGeometry/interface/DTTopology.h"
-
-
 DTTnPLocalTrigRes::DTTnPLocalTrigRes(const std::string & configFile) : DTTnPBaseAnalysis(configFile)
 {
 
@@ -143,12 +132,14 @@ void DTTnPLocalTrigRes::book()
 //NOTFORNOW      				      12,0.5,12.5,5,-2.5,2.5);					
 
     
-    for (Int_t iWh = -2; iWh <= 2; ++iWh)    {
-      std::stringstream wheel; wheel << "_Wh" << iWh;
+    for (Int_t iWh = 1; iWh <= 5; ++iWh)    {
+      std::stringstream wheel; 
+      if (iWh<3 ) wheel << "_Whm" << iWh;	
+      if (iWh==3) wheel << "_Wh0";
+      if (iWh>3 ) wheel << "_Whp" << iWh-3;
       std::cout << wheel.str() << std::endl;
       
-      
-	
+      	
       for (Int_t iSc = 1; iSc <= 14; ++iSc)    {
 	std::stringstream sector; sector << "_Sec" << iWh;
 	std::cout << sector.str() << std::endl;
@@ -234,9 +225,13 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
     if (!segm_ok) continue;
     if (std::abs(probeVec.Eta()) > m_tnpConfig.probe_maxAbsEta[iCh - 1]) continue;    
 
-    for (Int_t iWh = -2; iWh <= 2; ++iWh)    {
-      std::stringstream wheel; wheel << "_Wh" << iWh;
+    for (Int_t iWh = 1; iWh <= 5; ++iWh)    {
+      std::stringstream wheel; 
+      if (iWh<3 ) wheel << "_Whm" << iWh;	
+      if (iWh==3) wheel << "_Wh0";
+      if (iWh>3 ) wheel << "_Whp" << iWh-2;
       std::cout << wheel.str() << std::endl;
+      
       for (Int_t iSc = 1; iSc <= 14; ++iSc)    {
 	if (iSc > 12 && iCh !=4) continue;
 	std::stringstream sector; sector << "_Sec" << iWh;
@@ -245,7 +240,7 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 	
 	int wheel    = dtsegm4D_wheel->at(iPassingSeg);
 	int station  = dtsegm4D_station->at(iPassingSeg);
-	int sector = dtsegm4D_sector->at(iPassingSeg);
+	int scsector = dtsegm4D_sector->at(iPassingSeg);
 	float trackPosPhi = dtsegm4D_x_pos_loc->at(iPassingSeg);
 	float trackPosEta = dtsegm4D_y_pos_loc->at(iPassingSeg);
 	float trackDirPhi = TMath::ATan(dtsegm4D_x_dir_loc->at(iPassingSeg)/ dtsegm4D_y_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
@@ -255,7 +250,7 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 	// In: 
 	Float_t trigPos  = ltTwinMuxIn_phi->at(iPassingTMuxIn);
 	Float_t trigDir = ltTwinMuxIn_phiB->at(iPassingTMuxIn);
-	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(sector-1);
+	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
 	trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
 
 	Float_t deltaPos = trigPos-trackPosPhi;
@@ -284,7 +279,7 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 	// Out: 
 	trigPos  = ltTwinMuxOut_phi->at(iPassingTMuxOut);
 	trigDir = ltTwinMuxOut_phiB->at(iPassingTMuxOut);
-	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(sector-1);
+	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
 	trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
 
 	deltaPos = trigPos-trackPosPhi;
@@ -302,7 +297,6 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 
 void DTTnPLocalTrigRes::endJob() 
 {
-  return;
 }
 
 Int_t DTTnPLocalTrigRes::getPassingProbe(const Int_t iMu,
