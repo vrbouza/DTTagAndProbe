@@ -79,7 +79,7 @@ void DTTnPLocalTrigRes::book()
 					     "# of matched stations other than the one under investigation",
 					     80,-1.2,1.2,5,-0.5,4.5);
   
-  
+/*  
   for (Int_t iCh = 1; iCh < 5; ++iCh) {
       std::stringstream iChTag;
       iChTag << "MB" << iCh;
@@ -98,7 +98,7 @@ void DTTnPLocalTrigRes::book()
 				180,-TMath::Pi(),TMath::Pi()); 
       
   }
-
+*/
   
   Int_t nPhiBins  = 401;
   Float_t rangePhi  = 10.025;
@@ -108,7 +108,7 @@ void DTTnPLocalTrigRes::book()
   /// ---- Resolution plots per sector, wheel & chamber: 
   for (Int_t iCh = 1; iCh <= 4; ++iCh) {
     std::stringstream station;  station << "_MB" << iCh;
-    std::cout << station.str() << std::endl;
+    std::cout << "Booking station: "<< station.str() << std::endl;
     
     std::string chTag = "_MB" + station.str();	  
     std::string hName = "TM_PhiResidualIn_SecVsWh" + chTag;
@@ -137,12 +137,11 @@ void DTTnPLocalTrigRes::book()
       if (iWh<3 ) wheel << "_Whm" << iWh;	
       if (iWh==3) wheel << "_Wh0";
       if (iWh>3 ) wheel << "_Whp" << iWh-3;
-      std::cout << wheel.str() << std::endl;
-      
-      	
+      std::cout << "Booking wheel: " << wheel.str() << std::endl;
+            	
       for (Int_t iSc = 1; iSc <= 14; ++iSc)    {
-	std::stringstream sector; sector << "_Sec" << iWh;
-	std::cout << sector.str() << std::endl;
+	std::stringstream sector; sector << "_Sec" << iSc;
+	std::cout << "Booking sector: " << sector.str() << std::endl;
 	
 	if (iSc > 12 && iCh !=4) continue;
 	
@@ -207,7 +206,7 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
   /// ---- Resolution plots per sector, wheel & chamber: 
   for (Int_t iCh = 1; iCh <= 4; ++iCh) {
     std::stringstream station;  
-    station << "MB" << iCh;
+    station << "_MB" << iCh;
     
     Int_t nMatchInOtherCh = DTTnPBaseAnalysis::nMatchedCh(iMu,iCh);
     m_plots["nOtherMatchedChVsEta"]->Fill(Mu_eta->at(iMu),nMatchInOtherCh);
@@ -229,24 +228,26 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
       std::stringstream wheel; 
       if (iWh<3 ) wheel << "_Whm" << iWh;	
       if (iWh==3) wheel << "_Wh0";
-      if (iWh>3 ) wheel << "_Whp" << iWh-2;
-      std::cout << wheel.str() << std::endl;
+      if (iWh>3 ) wheel << "_Whp" << iWh-3;
       
       for (Int_t iSc = 1; iSc <= 14; ++iSc)    {
 	if (iSc > 12 && iCh !=4) continue;
-	std::stringstream sector; sector << "_Sec" << iWh;
-	std::cout << sector.str() << std::endl;
+	std::stringstream sector; sector << "_Sec" << iSc;
 	std::string chTag = wheel.str() + sector.str() + station.str();	  	
-	
+	std::cout << "Filling: " << chTag << std::endl;
+
 	int wheel    = dtsegm4D_wheel->at(iPassingSeg);
 	int station  = dtsegm4D_station->at(iPassingSeg);
 	int scsector = dtsegm4D_sector->at(iPassingSeg);
+	if (iCh  != station ) continue;
+	if (iWh-3!= wheel   ) continue; 
+	if (iSc  != scsector) continue;
 	float trackPosPhi = dtsegm4D_x_pos_loc->at(iPassingSeg);
 	float trackPosEta = dtsegm4D_y_pos_loc->at(iPassingSeg);
 	float trackDirPhi = TMath::ATan(dtsegm4D_x_dir_loc->at(iPassingSeg)/ dtsegm4D_y_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
 	float trackDirEta = TMath::ATan(dtsegm4D_y_dir_loc->at(iPassingSeg)/ dtsegm4D_z_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
-	
-	
+
+	std::cout << "segment info" << endl;
 	// In: 
 	Float_t trigPos  = ltTwinMuxIn_phi->at(iPassingTMuxIn);
 	Float_t trigDir = ltTwinMuxIn_phiB->at(iPassingTMuxIn);
@@ -255,29 +256,34 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 
 	Float_t deltaPos = trigPos-trackPosPhi;
 	Float_t deltaDir = trigDir-trackDirPhi;
-	
 
 	std::string hName = "TM_PhiResidualIn" + chTag;
+	cout << hName << endl;
 	m_plots[hName.c_str()]->Fill(deltaPos);
 
 	hName = "TM_PhibResidualIn" + chTag;
+	cout << hName << endl;
 	m_plots[hName.c_str()]->Fill(deltaDir);
 	
 	hName = "TM_PhitkvsPhitrig" + chTag;
+	cout << hName << endl;
 	m_plots[hName.c_str()]->Fill(trigPos,trackPosPhi);
 	
 	hName = "TM_PhibtkvsPhibtrig" + chTag;
+	cout << hName << endl;
 	m_plots[hName.c_str()]->Fill(trigDir,trackDirPhi);
 
 	hName = "TM_PhibResidualvsTkPos" + chTag;
+	cout << hName << endl;
 	m_plots[hName.c_str()]->Fill(trackPosPhi,trigDir-trackDirPhi);
 	
 	hName = "TM_PhiResidualvsTkPos" + chTag;
+	cout << hName << endl;
 	m_plots[hName.c_str()]->Fill(trackPosPhi,trigPos-trackPosPhi);
 
-
+	cout << "Now for the twinmux out"<< endl;
 	// Out: 
-	trigPos  = ltTwinMuxOut_phi->at(iPassingTMuxOut);
+	/* trigPos  = ltTwinMuxOut_phi->at(iPassingTMuxOut);
 	trigDir = ltTwinMuxOut_phiB->at(iPassingTMuxOut);
 	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
 	trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
@@ -290,6 +296,7 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 
 	hName = "TM_PhibResidualOut" + chTag;
 	m_plots[hName.c_str()]->Fill(deltaDir);
+*/
       }
     }
   }
