@@ -220,7 +220,7 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
     bool segm_ok = false;
     segm_ok = (iPassingSeg>=0 && ((dtsegm4D_hasZed->at(iPassingSeg)>0 && iCh!=4 && dtsegm4D_phinhits->at(iPassingSeg)>=4) ||
 				  (iCh==4 && dtsegm4D_phinhits->at(iPassingSeg)>=4)));
-    
+   
     if (!segm_ok) continue;
     if (std::abs(probeVec.Eta()) > m_tnpConfig.probe_maxAbsEta[iCh - 1]) continue;    
 
@@ -234,7 +234,6 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 	if (iSc > 12 && iCh !=4) continue;
 	std::stringstream sector; sector << "_Sec" << iSc;
 	std::string chTag = wheel.str() + sector.str() + station.str();	  	
-	std::cout << "Filling: " << chTag << std::endl;
 
 	int wheel    = dtsegm4D_wheel->at(iPassingSeg);
 	int station  = dtsegm4D_station->at(iPassingSeg);
@@ -247,56 +246,55 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 	float trackDirPhi = TMath::ATan(dtsegm4D_x_dir_loc->at(iPassingSeg)/ dtsegm4D_y_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
 	float trackDirEta = TMath::ATan(dtsegm4D_y_dir_loc->at(iPassingSeg)/ dtsegm4D_z_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
 
-	std::cout << "segment info" << endl;
-	// In: 
-	Float_t trigPos  = ltTwinMuxIn_phi->at(iPassingTMuxIn);
-	Float_t trigDir = ltTwinMuxIn_phiB->at(iPassingTMuxIn);
-	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
-	trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
-
-	Float_t deltaPos = trigPos-trackPosPhi;
-	Float_t deltaDir = trigDir-trackDirPhi;
-
-	std::string hName = "TM_PhiResidualIn" + chTag;
-	cout << hName << endl;
-	m_plots[hName.c_str()]->Fill(deltaPos);
-
-	hName = "TM_PhibResidualIn" + chTag;
-	cout << hName << endl;
-	m_plots[hName.c_str()]->Fill(deltaDir);
-	
-	hName = "TM_PhitkvsPhitrig" + chTag;
-	cout << hName << endl;
-	m_plots[hName.c_str()]->Fill(trigPos,trackPosPhi);
-	
-	hName = "TM_PhibtkvsPhibtrig" + chTag;
-	cout << hName << endl;
-	m_plots[hName.c_str()]->Fill(trigDir,trackDirPhi);
-
-	hName = "TM_PhibResidualvsTkPos" + chTag;
-	cout << hName << endl;
-	m_plots[hName.c_str()]->Fill(trackPosPhi,trigDir-trackDirPhi);
-	
-	hName = "TM_PhiResidualvsTkPos" + chTag;
-	cout << hName << endl;
-	m_plots[hName.c_str()]->Fill(trackPosPhi,trigPos-trackPosPhi);
-
-	cout << "Now for the twinmux out"<< endl;
+	Float_t trigPos = 0.; 
+	Float_t trigDir = 0.;
+	Float_t deltaPos = 0.; 
+	Float_t deltaDir = 0.; 
+	std::string hName = ""; 
+	if (iPassingTMuxIn >=0) {
+	  // In: 
+	  trigPos = ltTwinMuxIn_phi->at(iPassingTMuxIn);
+	  trigDir = ltTwinMuxIn_phiB->at(iPassingTMuxIn);
+	  trigPos  = trigPos/4096 + ((TMath::Pi()*30.)/180.)*(scsector-1);
+	  trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
+	  
+	  deltaPos = trigPos-trackPosPhi;
+	  deltaDir = trigDir-trackDirPhi;
+	  
+	  hName = "TM_PhiResidualIn" + chTag;
+	  m_plots[hName.c_str()]->Fill(deltaPos);
+	  
+	  hName = "TM_PhibResidualIn" + chTag;
+	  m_plots[hName.c_str()]->Fill(deltaDir);
+	  
+	  hName = "TM_PhitkvsPhitrig" + chTag;
+	  m_plots[hName.c_str()]->Fill(trigPos,trackPosPhi);
+	  
+	  hName = "TM_PhibtkvsPhibtrig" + chTag;
+	  m_plots[hName.c_str()]->Fill(trigDir,trackDirPhi);
+	  
+	  hName = "TM_PhibResidualvsTkPos" + chTag;
+	  m_plots[hName.c_str()]->Fill(trackPosPhi,trigDir-trackDirPhi);
+	  
+	  hName = "TM_PhiResidualvsTkPos" + chTag;
+	  m_plots[hName.c_str()]->Fill(trackPosPhi,trigPos-trackPosPhi);
+	}
 	// Out: 
-	/* trigPos  = ltTwinMuxOut_phi->at(iPassingTMuxOut);
-	trigDir = ltTwinMuxOut_phiB->at(iPassingTMuxOut);
-	trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
-	trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
-
-	deltaPos = trigPos-trackPosPhi;
-	deltaDir = trigDir-trackDirPhi;
-
-	hName = "TM_PhiResidualOut" + chTag;
-	m_plots[hName.c_str()]->Fill(deltaPos);
-
-	hName = "TM_PhibResidualOut" + chTag;
-	m_plots[hName.c_str()]->Fill(deltaDir);
-*/
+	if (iPassingTMuxOut >= 0) {
+	  trigPos  = ltTwinMuxOut_phi->at(iPassingTMuxOut);
+	  trigDir = ltTwinMuxOut_phiB->at(iPassingTMuxOut);
+	  trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
+	  trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
+	  
+	  deltaPos = trigPos-trackPosPhi;
+	  deltaDir = trigDir-trackDirPhi;
+	  
+	  hName = "TM_PhiResidualOut" + chTag;
+	  m_plots[hName.c_str()]->Fill(deltaPos);
+	  
+	  hName = "TM_PhibResidualOut" + chTag;
+	  m_plots[hName.c_str()]->Fill(deltaDir);
+	}
       }
     }
   }
