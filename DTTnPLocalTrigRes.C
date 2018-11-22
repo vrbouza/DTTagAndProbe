@@ -5,6 +5,11 @@ DTTnPLocalTrigRes::DTTnPLocalTrigRes(const std::string & configFile) : DTTnPBase
 
 }
 
+DTTnPLocalTrigRes::DTTnPLocalTrigRes(const std::string & configFile) : DTTnPBaseAnalysis(configFile)
+{
+
+}
+
 void DTTnPLocalTrigRes::Loop()
 {
 
