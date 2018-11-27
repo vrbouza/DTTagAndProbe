@@ -929,7 +929,7 @@
         "plot"      :
         {
             "x"                 : [-3.15, 3.15, "muon #phi"],
-            "y"                 : [-1.2 1.2,  "muon #eta"],
+            "y"                 : [-1.2, 1.2,  "muon #eta"],
             "z"                 : [0.0, 1.0, "DT Segment Reconstruction efficiency x accepcante"],
             "option"            : "gridcolz",
             "legendTitle"       : "DT Segment Reconstruction efficiency x accepcante  -  MB1",
