@@ -243,24 +243,33 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 	int wheel    = dtsegm4D_wheel->at(iPassingSeg);
 	int station  = dtsegm4D_station->at(iPassingSeg);
 	int scsector = dtsegm4D_sector->at(iPassingSeg);
+
 	if (iCh  != station ) continue;
 	if (iWh-3!= wheel   ) continue; 
 	if (iSc  != scsector) continue;
-	float trackPosPhi = dtsegm4D_x_pos_loc->at(iPassingSeg);
-	float trackPosEta = dtsegm4D_y_pos_loc->at(iPassingSeg);
+	float trackPosPhi = TMath::Tan(dtsegm4D_phi->at(iPassingSeg));
 	float trackDirPhi = TMath::ATan(dtsegm4D_x_dir_loc->at(iPassingSeg)/ dtsegm4D_y_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
-	float trackDirEta = TMath::ATan(dtsegm4D_y_dir_loc->at(iPassingSeg)/ dtsegm4D_z_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
-
-	Float_t trigPos = 0.; 
-	Float_t trigDir = 0.;
-	Float_t deltaPos = 0.; 
-	Float_t deltaDir = 0.; 
+//SEGMENT	float trackPosPhi = dtsegm4D_x_pos_loc->at(iPassingSeg);
+//SEGMENT	float trackDirPhi = TMath::ATan(dtsegm4D_x_dir_loc->at(iPassingSeg)/ dtsegm4D_y_dir_loc->at(iPassingSeg))*TMath::RadToDeg(); 
+//SEGMENT
+//SEGMENT	Float_t trigPos = 0.; 
+//SEGMENT	Float_t trigDir = 0.;
+//SEGMENT	Float_t deltaPos = 0.; 
+//SEGMENT	Float_t deltaDir = 0.; 
+//SEGMENT	float phin = (ssector-1)*TMath::Pi()/6;
+//SEGMENT	float phicenter =  dtsegm4D_phi;
+//SEGMENT	float deltaphi = phicenter-phin;
+//SEGMENT	float r = TMath::Sqrt(dtsegm4D_cosx->at(iPassingSeg)*dtsegm4D_cosx->at(iPassingSeg)+dtsegm4D_cosy->at(iPassingSeg)*dtsegm4D_cosy->at(iPassingSeg));
 	std::string hName = ""; 
 	if (iPassingTMuxIn >=0) {
 	  // In: 
 	  trigPos = ltTwinMuxIn_phi->at(iPassingTMuxIn);
 	  trigDir = ltTwinMuxIn_phiB->at(iPassingTMuxIn);
-	  trigPos  = trigPos/4096 + ((TMath::Pi()*30.)/180.)*(scsector-1);
+	  
+	  
+	  //	  float x = (tan(phi/4096.)-tan(deltaphi))*(r*cos(deltaphi) - zcn_[st-1]); //zcn is in local coordinates -> z invreases approching to vertex
+	  
+	  trigPos  = TMath::Tan(trigPos/4096. + ((TMath::Pi()*30.)/180.)*(scsector-1));
 	  trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
 	  
 	  deltaPos = trigPos-trackPosPhi;
@@ -288,7 +297,10 @@ void DTTnPLocalTrigRes::fill(const Int_t iMu)
 	if (iPassingTMuxOut >= 0) {
 	  trigPos  = ltTwinMuxOut_phi->at(iPassingTMuxOut);
 	  trigDir = ltTwinMuxOut_phiB->at(iPassingTMuxOut);
-	  trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
+//	  trigPos  = trigPos/4096 + ((TMath::Pi()*30)/180)*(scsector-1);
+//	  trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
+
+	  trigPos  = TMath::Tan(trigPos/4096. + ((TMath::Pi()*30.)/180.)*(scsector-1));
 	  trigDir = (trigDir/512.+trigPos/4096.)*TMath::RadToDeg();
 	  
 	  deltaPos = trigPos-trackPosPhi;
