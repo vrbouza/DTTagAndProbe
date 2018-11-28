@@ -355,7 +355,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -417,7 +417,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -479,7 +479,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -541,7 +541,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -603,7 +603,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -666,7 +666,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -728,7 +728,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -790,7 +790,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -852,7 +852,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -914,7 +914,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -976,7 +976,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1038,7 +1038,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1100,7 +1100,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1162,7 +1162,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1224,7 +1224,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1286,7 +1286,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1348,7 +1348,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1410,7 +1410,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1472,7 +1472,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1534,7 +1534,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1596,7 +1596,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1658,7 +1658,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1720,7 +1720,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1782,7 +1782,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1844,7 +1844,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1906,7 +1906,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -1968,7 +1968,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2030,7 +2030,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2092,7 +2092,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2154,7 +2154,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2216,7 +2216,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2278,7 +2278,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2340,7 +2340,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2402,7 +2402,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2464,7 +2464,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2526,7 +2526,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2588,7 +2588,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2650,7 +2650,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2712,7 +2712,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2774,7 +2774,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2836,7 +2836,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2898,7 +2898,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -2960,7 +2960,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3022,7 +3022,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3084,7 +3084,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3146,7 +3146,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3208,7 +3208,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3270,7 +3270,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3332,7 +3332,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3394,7 +3394,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3456,7 +3456,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3518,7 +3518,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3580,7 +3580,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3642,7 +3642,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3704,7 +3704,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3766,7 +3766,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3828,7 +3828,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3890,7 +3890,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -3952,7 +3952,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4014,7 +4014,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4076,7 +4076,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4138,7 +4138,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4262,7 +4262,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4324,7 +4324,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4386,7 +4386,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4448,7 +4448,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4510,7 +4510,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4572,7 +4572,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",
@@ -4634,7 +4634,7 @@
         },
         "plot"      :
         {
-            "x"                 : [-10.025, 10.025, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
+            "x"                 : [-5.0, 5.0, "tan(#varphi_{b}^{tri})-tan(#varphi_{b}^{seg})"],
             "y"                 : [0.0, 1.05, "Entries"],
             "option"            : "",
             "legendTitle"       : "",

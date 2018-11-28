@@ -206,6 +206,7 @@ for keyPlot in config:
                                 histo.RemovePoint(iPoint)
                             histo.Draw(option + "AP")
                     else :
+                        histograms[iHisto].GetXaxis().SetRangeUser(plotX[0], plotX[1])
                         histograms[iHisto].Draw(option)
             else :
                 if hasCleanEmptyBins :
